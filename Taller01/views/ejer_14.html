@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 14</title>
+    <!-- Agregar Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="d-flex justify-content-center align-items-center min-vh-100">
+        <div class="container form-container">
+            <!-- Enunciado -->
+            <p>Determinar el nivel de un empleado según las siguientes condiciones:
+                a. Nivel 1 si el sueldo es menor a 500 y lleva menos de 4 años en la
+                empresa <br>
+                b. Nivel 2 si el sueldo esta entre 501 y 1000 lleva menos de 4 años en la
+                empresa <br>
+                c. Nivel 3 no importa el sueldo, solo que lleve mas de 10 años en la
+                empresa <br>
+                d. Nivel 4 para los que lleven entre 5 y 9 años en la empresa y ganen
+                menos de 2000. <br>
+                e. Los demás están en el nivel 0.</p>
+
+
+            <button class="btn btn-primary" onclick="verificarNivel()">Verificar Nivel</button>
+
+            <!-- resultados -->
+            <div id="resultado"></div>
+        </div>
+    </div>
+
+    <!--scripts-->
+    <script src="../js/14.js"></script>
+    <!--  Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-wEYG3WjdoAGk9Ocl0r2uY9Mw7nzRJSaZoBlz5Ba58bxgtdw2D3bxhGJ7e9p0ym35"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
