@@ -9,4 +9,6 @@ function verificarNumero(){
     } else {
          resultado.innerHTML = `El número ${numero} no es mayor que 0.`;
     }
+
+    console.log(resultado);
 }
