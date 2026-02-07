@@ -275,6 +275,35 @@ function contarDivisibles() {
         '<br>Numeros divisibles por 8 entre 200 y 20: ' + divisiblesPor8.join(', ');
 }
 
+//Ejercicio 10
+function ejercicio10() {
+    document.getElementById("enunciado").innerHTML = `
+    <p>Realizar un programa que capture el nombre de dos personas y las fechas
+    de nacimiento con cada campo por separado día, mes y año y calcule la
+    edad de dos personas diferentes y diga cuál de ellos es mayor.</p>
+
+    <input type="button" value="Calcular Edad" onclick="calcularEdad()">
+    `;
+}
+
+function calcularEdad() {
+    var nombre1, nombre2, dia1, mes1, año1, dia2, mes2, año2;
+    nombre1 = prompt("Ingrese el nombre de la primera persona: ");
+    dia1 = Number(prompt("Ingrese el día de nacimiento de " + nombre1 + ": "));
+    mes1 = Number(prompt("Ingrese el mes de nacimiento de " + nombre1 + ": "));
+    año1 = Number(prompt("Ingrese el año de nacimiento de " + nombre1 + ": "));
+    nombre2 = prompt("Ingrese el nombre de la segunda persona: ");
+    dia2 = Number(prompt("Ingrese el día de nacimiento de " + nombre2 + ": "));
+    mes2 = Number(prompt("Ingrese el mes de nacimiento de " + nombre2 + ": "));
+    año2 = Number(prompt("Ingrese el año de nacimiento de " + nombre2 + ": "));
+
+    var edad1 = calcularEdadPersona(dia1, mes1, año1);
+    var edad2 = calcularEdadPersona(dia2, mes2, año2);
+
+    var mayor = edad1 > edad2 ? nombre1 : nombre2;
+    document.getElementById("resultado").innerHTML = 'La persona mayor es: ' + mayor;
+}
+
 //Ejercicio 21
 function ejercicio21() {
     document.getElementById("enunciado").innerHTML = `
