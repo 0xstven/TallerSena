@@ -68,6 +68,7 @@ function calcularTotal() {
     } else {
         descuento = total * 0.10;
     }
+    
 
     document.getElementById("resultado").innerHTML =
         'Precio por camisa: $' + precioCamisa +
@@ -285,24 +286,47 @@ function ejercicio10() {
     <input type="button" value="Calcular Edad" onclick="calcularEdad()">
     `;
 }
+function calcularEdadPersona(dia, mes, anio) {
+    const fechaNacimiento = new Date(anio, mes - 1, dia); 
+    const hoy = new Date();
+    let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+    const m = hoy.getMonth() - fechaNacimiento.getMonth();
+    const d = hoy.getDate() - fechaNacimiento.getDate();
 
-function calcularEdad() {
-    var nombre1, nombre2, dia1, mes1, año1, dia2, mes2, año2;
-    nombre1 = prompt("Ingrese el nombre de la primera persona: ");
-    dia1 = Number(prompt("Ingrese el día de nacimiento de " + nombre1 + ": "));
-    mes1 = Number(prompt("Ingrese el mes de nacimiento de " + nombre1 + ": "));
-    año1 = Number(prompt("Ingrese el año de nacimiento de " + nombre1 + ": "));
-    nombre2 = prompt("Ingrese el nombre de la segunda persona: ");
-    dia2 = Number(prompt("Ingrese el día de nacimiento de " + nombre2 + ": "));
-    mes2 = Number(prompt("Ingrese el mes de nacimiento de " + nombre2 + ": "));
-    año2 = Number(prompt("Ingrese el año de nacimiento de " + nombre2 + ": "));
-
-    var edad1 = calcularEdadPersona(dia1, mes1, año1);
-    var edad2 = calcularEdadPersona(dia2, mes2, año2);
-
-    var mayor = edad1 > edad2 ? nombre1 : nombre2;
-    document.getElementById("resultado").innerHTML = 'La persona mayor es: ' + mayor;
+    if (m < 0 || (m === 0 && d < 0)) {
+        edad--;
+    }
+    return edad;
 }
+function calcularEdad() {
+    const nombre1 = prompt("Ingrese el nombre de la primera persona:");
+    const dia1 = Number(prompt("Ingrese el día de nacimiento de " + nombre1 + ":"));
+    const mes1 = Number(prompt("Ingrese el mes de nacimiento de " + nombre1 + ":"));
+    const anio1 = Number(prompt("Ingrese el año de nacimiento de " + nombre1 + ":"));
+
+    const nombre2 = prompt("Ingrese el nombre de la segunda persona:");
+    const dia2 = Number(prompt("Ingrese el día de nacimiento de " + nombre2 + ":"));
+    const mes2 = Number(prompt("Ingrese el mes de nacimiento de " + nombre2 + ":"));
+    const anio2 = Number(prompt("Ingrese el año de nacimiento de " + nombre2 + ":"));
+
+    const edad1 = calcularEdadPersona(dia1, mes1, anio1);
+    const edad2 = calcularEdadPersona(dia2, mes2, anio2);
+
+    let mayor;
+    if (edad1 > edad2) {
+        mayor = nombre1;
+    } else if (edad2 > edad1) {
+        mayor = nombre2;
+    } else {
+        mayor = "Ambos tienen la misma edad";
+    }
+
+    document.getElementById("resultado").innerHTML = 
+        nombre1 + " tiene " + edad1 + " años.<br>" +
+        nombre2 + " tiene " + edad2 + " años.<br>" +
+        "La persona mayor es: " + mayor;
+}
+    
 
 //Ejercicio 21
 function ejercicio21() {
