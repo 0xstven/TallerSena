@@ -12,19 +12,22 @@ function ejercicio1() {
 }
 
 function calcularDescuento() {
-    var producto, clave, precioOriginal;
+    var producto = prompt("Ingrese el nombre del producto:");
+    var clave = prompt("Ingrese la clave (01 o 02):");
+    var precioOriginal = Number(prompt("Ingrese el precio original:"));
     var descuento = 0, total;
 
-    producto = prompt("Ingrese el nombre del producto:");
-    clave = prompt("Ingrese la clave (01 o 02):");
-    precioOriginal = Number(prompt("Ingrese el precio original:"));
+    if (isNaN(precioOriginal) || precioOriginal <= 0) {
+        alert("Precio inválido");
+        return;
+    }
 
     if (clave === "01") {
         descuento = precioOriginal * 0.10;
     } else if (clave === "02") {
         descuento = precioOriginal * 0.20;
     } else {
-        alert("Clave inválida. Solo existen las claves 01 y 02.");
+        alert("Clave inválida");
         return;
     }
 
@@ -35,7 +38,7 @@ function calcularDescuento() {
         "<br>Clave: " + clave +
         "<br>Precio original: $" + precioOriginal +
         "<br>Descuento: $" + descuento +
-        "<br>Total con descuento: $" + total;
+        "<br>Total a pagar: $" + total;
 }
 
 //Ejercicio 2
@@ -51,13 +54,12 @@ function ejercicio2() {
 }
 
 function calcularTotal() {
-    var cantidad, precioCamisa, total, descuento;
+    var precioCamisa = 25000;
+    var cantidad = Number(prompt("Ingrese la cantidad de camisas:"));
+    var total, descuento;
 
-    precioCamisa = 25000;
-    cantidad = Number(prompt("Ingrese la cantidad de camisas a comprar: "));
-
-    if (cantidad <= 0) {
-        alert("La cantidad debe ser mayor a cero.");
+    if (isNaN(cantidad) || cantidad <= 0) {
+        alert("Cantidad inválida");
         return;
     }
 
@@ -68,14 +70,12 @@ function calcularTotal() {
     } else {
         descuento = total * 0.10;
     }
-    
 
     document.getElementById("resultado").innerHTML =
-        'Precio por camisa: $' + precioCamisa +
-        '<br>Cantidad: ' + cantidad +
-        '<br>Total: $' + total +
-        '<br>Descuento aplicado: $' + descuento +
-        '<br>Total a pagar: $' + (total - descuento);
+        "Cantidad: " + cantidad +
+        "<br>Total sin descuento: $" + total +
+        "<br>Descuento: $" + descuento +
+        "<br>Total a pagar: $" + (total - descuento);
 }
 
 // Ejercicio 3
@@ -92,26 +92,26 @@ function ejercicio3() {
 }
 
 function calcularDescuentoSupermercado() {
-    var totalCompra, numAzar, descuento;
-    totalCompra = Number(prompt("Ingrese el total de la compra: "));
-    numAzar = Number(prompt("Ingrese un numero al azar entre 1 y 10: "));
+    var totalCompra = Number(prompt("Ingrese el total de la compra:"));
+    var numAzar = Math.floor(Math.random() * 10) + 1;
+    var descuento = 0;
 
-    if (numAzar < 1 || numAzar > 10) {
-        alert ("Numero invalido. Debe ser entre 1 y 10.");
+    if (isNaN(totalCompra) || totalCompra <= 0) {
+        alert("Total inválido");
         return;
     }
 
-    if (numAzar < 5) {
+    if (numAzar <= 5) {
         descuento = totalCompra * 0.20;
     } else if (numAzar < 10) {
         descuento = totalCompra * 0.15;
-    } 
+    }
+
     document.getElementById("resultado").innerHTML =
-        'Total de la compra: $' + totalCompra +
-        '<br>Número al azar: ' + numAzar +
-        '<br>Descuento de: ' + (numAzar < 5 ? '20%' : '15%') +
-        '<br>Descuento aplicado: $' + descuento +
-        '<br>Total a pagar: $' + (totalCompra - descuento);
+        "Total compra: $" + totalCompra +
+        "<br>Número al azar: " + numAzar +
+        "<br>Descuento: $" + descuento +
+        "<br>Total a pagar: $" + (totalCompra - descuento);
 }
 
 //Ejercicio 4
@@ -131,23 +131,28 @@ function ejercicio4() {
 }
 
 function calcularPulsaciones() {
-    var edad, sexo, pulsaciones;
-    edad = Number(prompt("Ingrese su edad: "));
-    sexo = prompt("Ingrese su sexo (M/F): ").toUpperCase();
+    var edad = Number(prompt("Ingrese la edad:"));
+    var sexo = prompt("Ingrese sexo (M/F):").toUpperCase();
+    var pulsaciones;
+
+    if (isNaN(edad) || edad <= 0) {
+        alert("Edad inválida");
+        return;
+    }
 
     if (sexo === "F") {
         pulsaciones = (220 - edad) / 10;
     } else if (sexo === "M") {
-        pulsaciones = (210 -edad) / 10;
+        pulsaciones = (210 - edad) / 10;
     } else {
-        alert("Sexo inválido. Ingrese 'M' para masculino o 'F' para femenino.");
+        alert("Sexo inválido");
         return;
     }
 
-    document.getElementById("resultado").innerHTML = 
-        'Edad: ' + edad +
-        '<br>Sexo: ' + sexo +
-        '<br>Pulsaciones: ' + pulsaciones;
+    document.getElementById("resultado").innerHTML =
+        "Edad: " + edad +
+        "<br>Sexo: " + sexo +
+        "<br>Pulsaciones: " + pulsaciones;
 }
 
 //Ejercicio 5
@@ -161,18 +166,16 @@ function ejercicio5() {
 }
 
 function calcularPositivo() {
-    var numero, positivo;
-    numero = Number(prompt("Ingrese un numero negativo: "));
+    var numero = Number(prompt("Ingrese un número negativo:"));
 
-    if (numero >= 0) {
-        alert("El numero ingresado no es negativo. Por favor ingrese un numero negativo.");
+    if (isNaN(numero) || numero >= 0) {
+        alert("Debe ingresar un número negativo");
         return;
     }
-    positivo = Math.abs(numero);
 
     document.getElementById("resultado").innerHTML =
-        'Numero ingresado: ' + numero +
-        '<br>Numero positivo: ' + positivo;
+        "Número negativo: " + numero +
+        "<br>Número positivo: " + Math.abs(numero);
 }
 
 //Ejercicio 6
@@ -185,17 +188,19 @@ function ejercicio6() {
 }
 
 function convertirUnidades() {
-    var kilogramos, gramos, toneladas;
-    kilogramos = Number(prompt("Ingrese el peso en kilogramos:"));
+    var kg = Number(prompt("Ingrese kilogramos:"));
 
-    gramos = kilogramos * 1000;
-    toneladas = kilogramos / 1000;
+    if (isNaN(kg) || kg < 0) {
+        alert("Valor inválido");
+        return;
+    }
 
     document.getElementById("resultado").innerHTML =
-        'Peso en kilogramos: ' + kilogramos +
-        '<br>Peso en gramos: ' + gramos +
-        '<br>Peso en toneladas: ' + toneladas;
+        "Kilogramos: " + kg +
+        "<br>Gramos: " + (kg * 1000) +
+        "<br>Toneladas: " + (kg / 1000);
 }
+
 
 //Ejercicio 7
 function ejercicio7() {
@@ -209,16 +214,17 @@ function ejercicio7() {
 }
 
 function calcularCostoGalletas() {
-    var cantidadGalletas, costoPorGalleta, totalCosto;
-    cantidadGalletas = Number(prompt("Ingrese la cantidad de galletas: "));
-    costoPorGalleta = 3500 / 15;
+    var cantidad = Number(prompt("Ingrese cantidad de galletas:"));
+    var precioUnidad = 3500 / 15;
 
-    totalCosto = cantidadGalletas * costoPorGalleta;
+    if (isNaN(cantidad) || cantidad <= 0) {
+        alert("Cantidad inválida");
+        return;
+    }
 
     document.getElementById("resultado").innerHTML =
-        'Cantidad de galletas: ' + cantidadGalletas +
-        '<br>Costo por galleta: $' + costoPorGalleta.toFixed(2) +
-        '<br>Total a pagar: $' + totalCosto.toFixed(2);
+        "Precio por galleta: $" + precioUnidad.toFixed(2) +
+        "<br>Total a pagar: $" + (cantidad * precioUnidad).toFixed(2);
 }
 
 //Ejercicio 8
@@ -232,16 +238,17 @@ function ejercicio8() {
 }
 
 function calcularCostoCuadernos() {
-    var cantidadCuadernos, costoPorCuaderno, totalCosto;
-    cantidadCuadernos = Number(prompt("Ingrese la cantidad de cuadernos: "));
-    costoPorCuaderno = 75000 / 15;
+    var cantidad = Number(prompt("Ingrese cantidad de cuadernos:"));
+    var precioUnidad = 75000 / 15;
 
-    totalCosto = cantidadCuadernos * costoPorCuaderno;
+    if (isNaN(cantidad) || cantidad <= 0) {
+        alert("Cantidad inválida");
+        return;
+    }
 
     document.getElementById("resultado").innerHTML =
-        'Cantidad de cuadernos: ' + cantidadCuadernos +
-        '<br>Costo por cuaderno: $' + costoPorCuaderno.toFixed(2) +
-        '<br>Total a pagar: $' + totalCosto.toFixed(2);
+        "Precio por cuaderno: $" + precioUnidad.toFixed(2) +
+        "<br>Total a pagar: $" + (cantidad * precioUnidad).toFixed(2);
 }
 
 //Ejercicio 9
@@ -256,24 +263,20 @@ function ejercicio9() {
 }
 
 function contarDivisibles() {
-    var divisiblesPor6 = [];
-    var divisiblesPor8 = [];
+    var div6 = [];
+    var div8 = [];
 
-    for (var i  = 1; i <= 200; i++) {
-        if (i % 6 === 0) {
-            divisiblesPor6.push(i);
-        }
+    for (var i = 1; i <= 200; i++) {
+        if (i % 6 === 0) div6.push(i);
     }
 
     for (var j = 200; j >= 20; j--) {
-        if (j % 8 === 0) {
-            divisiblesPor8.push(j);
-        }
+        if (j % 8 === 0) div8.push(j);
     }
 
     document.getElementById("resultado").innerHTML =
-        'Numeros divisibles por 6 entre 1 y 200: ' + divisiblesPor6.join(', ') +
-        '<br>Numeros divisibles por 8 entre 200 y 20: ' + divisiblesPor8.join(', ');
+        "<b>Divisibles por 6:</b><br>" + div6.join(", ") +
+        "<br><br><b>Divisibles por 8:</b><br>" + div8.join(", ");
 }
 
 //Ejercicio 10
