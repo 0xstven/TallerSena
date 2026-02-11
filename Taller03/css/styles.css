@@ -1,0 +1,73 @@
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f2f2f2;
+}
+
+h1{
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Menú */
+.menu{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    background-color: #444;
+    padding: 10px;
+}
+
+.menu button{
+    background-color: #666;
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.menu button:hover{
+    background-color: #ffb347;
+    color: black;
+}
+
+/* Contenido */
+.contenedor{
+    display: flex;
+    width: 80%;
+    margin: 20px auto;
+    gap: 20px;
+}
+
+#enunciados, #resultado{
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.ejercicio{
+    display: none;
+}
+
+
+#resultado{
+    background-color: #2f4f4f;
+    color: white;
+}
+
+input[type="button"]{
+    margin-top: 10px;
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    background-color: #444;
+    color: white;
+    border-radius: 4px;
+}
+
+input[type="button"]:hover{
+    background-color: #ffb347;
+    color: black;
+}
